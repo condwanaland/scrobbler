@@ -28,7 +28,7 @@ __version__ = '0.0.4'
 
 def get_options(parser):
     """ Define command line options."""
-    parser.add_option("-u", "--user", dest="username", default="condwanaland",
+    parser.add_option("-u", "--user", dest="username", default=None,
                       help="User name.")
     parser.add_option("-o", "--outfile", dest="outfile", default="exported_tracks.txt",
                       help="Output file, default is exported_tracks.txt")
@@ -49,7 +49,7 @@ def get_options(parser):
         infotype = "bannedtracks"
     else:
         infotype = "recenttracks"
-         
+
     return options.username, options.outfile, options.startpage, options.server, infotype
 
 def connect_server(server, username, startpage, sleep_func=time.sleep, tracktype='recenttracks'):
@@ -166,7 +166,7 @@ def get_tracks(server, username, startpage=1, sleep_func=time.sleep, tracktype='
             response =  connect_server(server, username, page, sleep_func, tracktype)
 
         tracklist = get_tracklist(response)
-		
+
         tracks = []
         for trackelement in tracklist:
             # do not export the currently playing track.
