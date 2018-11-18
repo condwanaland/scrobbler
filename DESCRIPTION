@@ -1,4 +1,4 @@
-Package: musicr
+Package: scrobbler
 Type: Package
 Title: Download scrobbles from last.fm
 Version: 0.1.0
