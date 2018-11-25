@@ -4,7 +4,7 @@
 \alias{fetch_tracks}
 \title{fetch_tracks}
 \usage{
-fetch_tracks(username, out_file, start_page)
+fetch_tracks(username, out_file, start_page = NULL)
 }
 \arguments{
 \item{username}{Username of last.fm account to fetch scrobbles from}
