@@ -6,6 +6,13 @@
 \usage{
 fetch_tracks(username, out_file, start_page)
 }
+\arguments{
+\item{username}{Username of last.fm account to fetch scrobbles from}
+
+\item{out_file}{Name of output file to save tracks to (i.e., scrobbles.txt)}
+
+\item{start_page}{Page to start from. Defaults to 1}
+}
 \description{
 Runs a script in your working directory called 'lastexport.py'
 }

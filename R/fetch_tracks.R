@@ -2,6 +2,10 @@
 #'
 #' Runs a script in your working directory called 'lastexport.py'
 #'
+#' @param username Username of last.fm account to fetch scrobbles from
+#' @param out_file Name of output file to save tracks to (i.e., scrobbles.txt)
+#' @param start_page Page to start from. Defaults to 1
+#'
 #' @return
 #' @export
 #'
