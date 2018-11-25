@@ -10,11 +10,7 @@
 fetch_tracks <- function(username, out_file, start_page){
 
   # Arguments must be quoted - check that everything is a character
-  tryCatch({
-    stopifnot(is.character(username),
-              is.character(out_file),
-              is.character(start_page))},
-    error = function(e) stop("Arguments must be supplied as characters"))
+  check_args_are_chr(username, out_file, start_page)
 
   # Store args as objects to be used later
   u <- username
