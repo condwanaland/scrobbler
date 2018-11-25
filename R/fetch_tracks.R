@@ -11,7 +11,7 @@
 #'
 #' @examples
 
-fetch_tracks <- function(username, out_file, start_page){
+fetch_tracks <- function(username, out_file, start_page = NULL){
 
   # Arguments must be quoted - check that everything is a character
   check_args_are_chr(username, out_file, start_page)

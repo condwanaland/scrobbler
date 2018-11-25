@@ -18,3 +18,8 @@ test_that("Non characters throw error", {
 test_that("Characters do not throw errors", {
   expect_error(check_args_are_chr("one", "two", "three"), NA)
 })
+
+
+test_that("Missing start page does not throw error", {
+  expect_error(check_args_are_chr("one", "two"), NA)
+})
