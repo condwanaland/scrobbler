@@ -8,6 +8,8 @@
 #' @examples
 
 fetch_tracks <- function(username, out_file, start_page){
+
+  # Arguments must be quoted - check that everything is a character
   tryCatch({
     stopifnot(is.character(username),
               is.character(out_file),
