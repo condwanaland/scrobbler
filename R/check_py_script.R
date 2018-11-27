@@ -40,7 +40,7 @@ check_py_script <- function(py_version){
 #' @export
 #'
 #' @examples
-find_py_script(version = "3")
+#' find_py_script(version = "3")
 
 find_py_script <- function(version){
   if (!version %in% c("2", "3")){
