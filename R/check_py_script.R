@@ -31,3 +31,25 @@ check_py_script <- function(py_version){
   }
 }
 
+
+#' Returns the file path to a py script
+#'
+#' @param version One of '2' or '3'. Specifies which version of python you will be running
+#'
+#' @return File path
+#' @export
+#'
+#' @examples
+find_py_script(version = "3")
+
+find_py_script <- function(version){
+  if (!version %in% c("2", "3")){
+    stop("Must be one of '2' or '3'")
+  }
+  if (version == "2"){
+    return(system.file("scripts", "lastexport2.py", package = "scrobbler"))
+  }
+  else {
+    return(system.file("scripts", "lastexport.py", package = "scrobbler"))
+  }
+}
