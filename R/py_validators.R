@@ -1,3 +1,4 @@
+# nocov start
 #' py_version
 #'
 #' Returns the version of python you are using
@@ -53,3 +54,4 @@ check_os <- function(){
  else stop("Could not determine os type")
 }
 
+#nocov end
