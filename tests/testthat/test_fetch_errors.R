@@ -11,6 +11,9 @@ test_that("All arguments are treated as characters", {
                regexp = "Arguments must be*")
 })
 
-test_that("Missing start page does not throw error", {
-  expect_error(fetch_tracks("one", "two"), NA)
+
+test_that("Missing start page does not throw error. Throws error for not having a py script",
+          {
+  expect_error(fetch_tracks("one", "two"),
+               "No 'lastexport' script detected*")
 })
