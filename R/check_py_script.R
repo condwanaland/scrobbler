@@ -23,11 +23,11 @@ check_py_script <- function(py_version){
     return("Python 3 exporter exists")
   }
 
-  if (py_version == "2"){
-    if(!file.exists("lastexportpy2.py")){
+  else if (py_version == "2"){
+    if(!file.exists("lastexport2.py")){
       return("Python 2 exporter does not exist")
     }
-    return("Python 2 exporter does not exist")
+    return("Python 2 exporter exists")
   }
 }
 
@@ -51,3 +51,27 @@ find_py_script <- function(version){
   }
   return(system.file("scripts", "lastexport.py", package = "scrobbler"))
 }
+
+
+
+#' install_export_script
+#'
+#' Copies the script used to scrape scrobbles into your working directory. Necessary in order
+#' to run 'fetch_tracks'
+#'
+#' @param version Which version of python to run. One of '2' or '3'.
+#'
+#' @return Invisibly returns TRUE or FALSE, indicating whether the file copy was successful.
+#' @export
+#'
+#' @examples
+
+install_export_script <- function(version){
+  py_script_path <- find_py_script(version)
+  mydir <- getwd()
+
+  file.copy(py_script_path, mydir)
+  invisible()
+}
+
+install_export_script("2")
