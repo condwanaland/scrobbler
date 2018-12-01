@@ -35,7 +35,7 @@ test_that("check_start_page throws error on non-numbers", {
                regexp = "start_page could not be converted*")
 })
 
-test_that("check_start_page throws error on decimals", {
-  expect_error(check_start_page_to_numeric("1.5"),
-               rexexp = "start_page could not be converted*")
+test_that("check_start_page truncates decimals", {
+  expect_equal(check_start_page_to_numeric("1.5"), 1)
+  expect_equal(check_start_page_to_numeric(34.76), 34)
 })
