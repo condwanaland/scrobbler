@@ -6,7 +6,7 @@
 #' @param out_file Name of output file to save tracks to (i.e., scrobbles.txt)
 #' @param start_page Page to start from. Defaults to 1
 #'
-#' @return
+#' @return .txt file of scrobbled tracks
 #' @export
 #'
 #' @examples
@@ -25,10 +25,27 @@ fetch_tracks <- function(username, out_file = "scrobbles.txt", start_page = NULL
   s <- as.integer(start_page)
 
   # Check whether there is a py script to run
-  if ((!file.exists("lastexport.py")) && (!file.exists("lastexport2.py"))) {
-    stop("No 'lastexport' script detected. Try running 'install_export_script'")
+  py_ready()
+
+  # Determine which version of the script we're gonna run
+  ver <- py_version_to_run()
+
+
+  # Construct the system query
+  if (ver == "lastexport2.py"){
+    system2("python",
+            args = c("lastexport2.py",
+                     paste("-u", u),
+                     paste("-p", s)))
   }
 
+  if (ver == "lastexport.py"){
+    system2("python",
+            args = c("lastexport.py",
+                     paste("-u", u),
+                     paste("-o", o),
+                     paste("-p", s)))
+  }
 
 }
 
