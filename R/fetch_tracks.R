@@ -35,8 +35,7 @@ fetch_tracks <- function(username, out_file = "scrobbles.txt", start_page = NULL
   if (ver == "lastexport2.py"){
     system2("python",
             args = c("lastexport2.py",
-                     paste("-u", u),
-                     paste("-p", s)))
+                     paste("-u", u)))
   }
 
   if (ver == "lastexport.py"){
