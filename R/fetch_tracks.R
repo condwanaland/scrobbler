@@ -11,7 +11,7 @@
 #'
 #' @examples
 
-fetch_tracks <- function(username, out_file, start_page = NULL){
+fetch_tracks <- function(username, out_file = "scrobbles.txt", start_page = NULL){
 
   # Arguments must be quoted - check that everything is a character
   check_args_are_chr(username, out_file, start_page)
@@ -22,9 +22,13 @@ fetch_tracks <- function(username, out_file, start_page = NULL){
   # Store args as objects to be used later
   u <- username
   o <- out_file
-  s <- start_page
+  s <- as.integer(start_page)
+
+  # Check whether there is a py script to run
+  if ((!file.exists("lastexport.py")) || (!file.exists("lastexport2.py"))) {
+    stop("No 'lastexport' script detected. Try running 'install_export_script'")
+  }
 
 
-  invisible()
 }
 
