@@ -20,6 +20,22 @@ test_that("Characters do not throw errors", {
 })
 
 
-test_that("Missing start page does not throw error", {
+test_that("Missing start_page does not throw error", {
   expect_error(check_args_are_chr("one", "two"), NA)
 })
+
+
+test_that("start_page is converted to numeric", {
+  expect_equal(check_start_page_to_numeric("1"), 1)
+  expect_equal(check_start_page_to_numeric("7632"), 7632)
+})
+
+test_that("check_start_page throws error on non-numbers", {
+  expect_error(check_start_page_to_numeric("boo"),
+               regexp = "start_page could not be converted*")
+})
+
+# test_that("check_start_page throws error on decimals", {
+#   expect_error(check_start_page_to_numeric("1.5"),
+#                rexexp = "start_page could not be converted*")
+# })
