@@ -4,7 +4,7 @@
 #'
 #' @param py_version Which version of python you want to use. One of '2' or '3'.
 #'
-#' @return
+#' @return Character vector
 #' @export
 #'
 #' @examples
@@ -31,7 +31,8 @@ check_py_script <- function(py_version){
   }
 }
 
-
+#' find_py_script
+#'
 #' Returns the file path to a py script
 #'
 #' @param version One of '2' or '3'. Specifies which version of python you will be running

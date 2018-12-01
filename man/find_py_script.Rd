@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_py_script.R
 \name{find_py_script}
 \alias{find_py_script}
-\title{Returns the file path to a py script}
+\title{find_py_script}
 \usage{
 find_py_script(version)
 }

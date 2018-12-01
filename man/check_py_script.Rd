@@ -9,6 +9,9 @@ check_py_script(py_version)
 \arguments{
 \item{py_version}{Which version of python you want to use. One of '2' or '3'.}
 }
+\value{
+Character vector
+}
 \description{
 Checks that the py script to scrape tracks exists in your working directory
 }

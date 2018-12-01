@@ -3,5 +3,6 @@
 export(check_py_script)
 export(fetch_tracks)
 export(find_py_script)
+export(install_scrobble_script)
 export(py_path)
 export(py_version)
