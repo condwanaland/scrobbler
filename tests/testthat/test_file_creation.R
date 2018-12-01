@@ -14,3 +14,8 @@ test_that("Script is copied successfulyl v2", {
 
 file.remove("lastexport.py")
 file.remove("lastexport2.py")
+
+test_that("install_export_script throws error with incorrect version number", {
+  expect_error(install_export_script("4"),
+               regexp = "Must be one of '2' or '3'", fixed = TRUE)
+})
