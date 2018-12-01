@@ -74,4 +74,3 @@ install_export_script <- function(version){
   invisible()
 }
 
-install_export_script("2")
