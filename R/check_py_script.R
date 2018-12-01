@@ -66,7 +66,7 @@ find_py_script <- function(version){
 #'
 #' @examples
 
-install_export_script <- function(version){
+install_scrobble_script <- function(version){
   py_script_path <- find_py_script(version)
   mydir <- getwd()
 

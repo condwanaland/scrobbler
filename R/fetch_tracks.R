@@ -25,7 +25,7 @@ fetch_tracks <- function(username, out_file = "scrobbles.txt", start_page = NULL
   s <- as.integer(start_page)
 
   # Check whether there is a py script to run
-  if ((!file.exists("lastexport.py")) || (!file.exists("lastexport2.py"))) {
+  if ((!file.exists("lastexport.py")) && (!file.exists("lastexport2.py"))) {
     stop("No 'lastexport' script detected. Try running 'install_export_script'")
   }
 
