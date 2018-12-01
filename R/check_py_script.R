@@ -49,7 +49,5 @@ find_py_script <- function(version){
   if (version == "2"){
     return(system.file("scripts", "lastexport2.py", package = "scrobbler"))
   }
-  else {
-    return(system.file("scripts", "lastexport.py", package = "scrobbler"))
-  }
+  return(system.file("scripts", "lastexport.py", package = "scrobbler"))
 }
