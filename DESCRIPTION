@@ -8,7 +8,8 @@ Description: Helper functions to fetch and use your 'last.fm' 'scrobbles'.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: reticulate
 RoxygenNote: 6.0.1
 Suggests: 
     testthat
+URL: https://github.com/condwanaland/scrobbler
+BugReports: https://github.com/condwanaland/scrobbler/issues
