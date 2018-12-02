@@ -13,6 +13,9 @@ fetch_tracks(username, out_file = "scrobbles.txt", start_page = NULL)
 
 \item{start_page}{Page to start from. Defaults to 1}
 }
+\value{
+.txt file of scrobbled tracks
+}
 \description{
 Runs a script in your working directory called 'lastexport.py'
 }
