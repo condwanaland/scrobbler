@@ -19,7 +19,7 @@ read_scrobbles <- function(file, convert_time = "None"){
     stop("Must be one of 'None', 'Date', 'Time'")
   }
 
-  dat <- read.delim(file, header = FALSE, sep = "\t")
+  dat <- utils::read.delim(file, header = FALSE, sep = "\t")
   colnames(dat) <- c("Date", "Song", "Artist", "Album",
                      "Song_mb_id", "Artist_mb_id", "Album_mb_id")
 
