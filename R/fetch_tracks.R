@@ -10,6 +10,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' fetch_tracks("your_username", out_file = "scrobbles.txt", start_page = 1)
+#' }
 
 fetch_tracks <- function(username, out_file = "scrobbles.txt", start_page = NULL){
 

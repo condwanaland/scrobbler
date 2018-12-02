@@ -11,7 +11,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' read_scrobbles("scrobbles.txt", convert_time = "Date")
+#' }
 
 read_scrobbles <- function(file, convert_time = "None"){
 
@@ -39,8 +41,9 @@ read_scrobbles <- function(file, convert_time = "None"){
 #'
 #' Convert a unix timestamp to either a datestamp or timestamp
 #'
-#' @param unix_col A column in a dataframe of 10 digit unix numbers
+#' @param unix_col A column in a dataframe of 10 digit unix numbers.
 #' @param to One of 'Date' or 'Time'. Determines whether you get a datestamp of timestamp.
+#' @param ... Additional arguments to be passed to anytime::anytime or anytime::anydate.
 #'
 #' @return Date vector
 #' @export

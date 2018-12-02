@@ -7,9 +7,11 @@
 convert(unix_col, to, ...)
 }
 \arguments{
-\item{unix_col}{A column in a dataframe of 10 digit unix numbers}
+\item{unix_col}{A column in a dataframe of 10 digit unix numbers.}
 
 \item{to}{One of 'Date' or 'Time'. Determines whether you get a datestamp of timestamp.}
+
+\item{...}{Additional arguments to be passed to anytime::anytime or anytime::anydate.}
 }
 \value{
 Date vector

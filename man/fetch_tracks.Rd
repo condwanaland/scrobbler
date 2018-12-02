@@ -19,3 +19,8 @@ fetch_tracks(username, out_file = "scrobbles.txt", start_page = NULL)
 \description{
 Runs a script in your working directory called 'lastexport.py'
 }
+\examples{
+\dontrun{
+fetch_tracks("your_username", out_file = "scrobbles.txt", start_page = 1)
+}
+}

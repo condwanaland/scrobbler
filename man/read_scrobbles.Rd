@@ -20,5 +20,7 @@ A dataframe
 Wrapper around read_delim to correctly read a scrobbled tracks file.
 }
 \examples{
+\dontrun{
 read_scrobbles("scrobbles.txt", convert_time = "Date")
+}
 }
