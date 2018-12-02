@@ -1,6 +1,6 @@
 Package: scrobbler
 Type: Package
-Title: Download Scrobbles from Last.fm
+Title: Download 'Scrobbles' from 'Last.fm'
 Version: 0.1.0
 Author: Conor Neilson
 Maintainer: Conor Neilson <condwanaland@gmail.com>
