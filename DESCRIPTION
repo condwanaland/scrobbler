@@ -13,3 +13,5 @@ Suggests:
     testthat
 URL: https://github.com/condwanaland/scrobbler
 BugReports: https://github.com/condwanaland/scrobbler/issues
+Imports: 
+    anytime
