@@ -1,0 +1,76 @@
+---
+title: "Changing your default python version"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Changing your default python version}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+`scrobbler` can use either a python 2 or python 3 script to scrape your scrobbles, but I recommend using the python 3 version. The easiest way to check if R will use a python 3 installation is to use `scrobbler::py_version()`. On my machine it returns
+
+```
+Python 3.6.0 :: Anaconda 4.3.0 (x86_64)
+```
+
+If your version has 3 as its major number (i.e., 3.x.y) then you're fine. 
+
+However if your version has a 2 as its major number then you'll need to download a version of python 3 which can be done [here](https://www.python.org/downloads/release/python-360/).
+
+Once that is downloaded, you need to tell R to use that version by default. This requires editing your `.Rprofile` file to set python 3 as your default. 
+
+To figure out where your python 3 is installed type the following into the R console
+
+```{r}
+system2("which", "python3")
+```
+
+if you're on mac, or 
+
+```{r}
+system2("where", "python3")
+```
+
+if you're on windows. The output I get on my machine is `//anaconda/bin/python3`, but it may look different on yours. 
+
+Then, open your `.Rprofile` by doing
+
+```
+usethis::edit_r_profile()
+```
+
+Unless you've edited this before, it will probably be blank. Into your `.Rprofile`, paste the following
+
+```
+Sys.setenv(PATH = paste(c("python3path", Sys.getenv("PATH")),
+                       collapse = .Platform$path.sep))
+```
+
+where `python3path` is replaced by the output from either `which python3` or `where python3` from above. 
+
+As an example, when I do `system2("which", "python3")`, my output is 
+
+`//anaconda/bin/python3`
+
+Therefore, the code I paste into `.Rprofile` is 
+
+```
+Sys.setenv(PATH = paste(c("//anaconda/bin", Sys.getenv("PATH")),
+                       collapse = .Platform$path.sep))
+```
+Note that I have removed the `/python3` bit from the end. 
+
+
+Save and close your `.Rprofile` and restart R. Now when you run
+```{r}
+scrobbler::py_version()
+```
+
+It should return a python3 installation.
