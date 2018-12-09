@@ -27,7 +27,7 @@ install.packages("devtools")
 devtools::install_github("condwanaland/scrobbler")
 ```
 
-`scrobbler` relies on you having a python installation on your computer. It can support python 2 and 3, but I highly recommend you get a python installation and attach it to your PATH variable. For instructions with this, please check the vignette.
+`scrobbler` relies on you having a python installation on your computer. It can support python 2 and 3, but I highly recommend you get a python 3 installation and attach it to your PATH variable. For instructions with this, please check the vignette.
 
 Once you've determined whether you want to run the python 2 or 3 script, you can use
 
@@ -41,7 +41,7 @@ This will install the python script in your working directory. You can then run
 ```
 scrobbler::fetch_tracks(username = "username", out_file = "scrobbles.txt")
 ```
-where username equals your last.fm username to download a txt file called "scrobbles.txt" containing your scrobbles. This is quite a slow process (it takes me about 4 mins to download ~10,000 scrobbles) so don't worry if it looks like you're computer is hanging. 
+where `username` equals your last.fm username. This will download a txt file called "scrobbles.txt" containing your scrobbles. This is quite a slow process (it takes me about 4 mins to download ~10,000 scrobbles) so don't worry if it looks like your computer is hanging. 
 
 Once the tracks are downloaded, you can use
 
