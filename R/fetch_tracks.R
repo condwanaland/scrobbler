@@ -14,7 +14,7 @@
 #' fetch_tracks("your_username", out_file = "scrobbles.txt", start_page = 1)
 #' }
 
-fetch_tracks <- function(username, out_file = "scrobbles.txt", start_page = NULL){
+fetch_tracks <- function(username, out_file, start_page = NULL){
 
   # Arguments must be quoted - check that everything is a character
   check_args_are_chr(username, out_file, start_page)

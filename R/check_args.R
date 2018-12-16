@@ -10,7 +10,7 @@ check_args_are_chr <- function(username, out_file, start_page = NULL){
     stopifnot(is.character(username),
               is.character(out_file),
               is.character(start_page) || is.null(start_page))},
-    error = function(e) stop("Arguments must be supplied as characters"))
+    error = function(e) stop("All arguments must be supplied as characters", call. = FALSE))
 }
 
 
