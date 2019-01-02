@@ -12,9 +12,8 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' read_scrobbles("scrobbles.txt", convert_time = "Date")
-#' }
+#' my_tracks <- read_scrobbles(system.file("extdata", "scrobbles.txt", package = "scrobbler"),
+#' convert_time = "Date")
 
 read_scrobbles <- function(file, convert_time = "None", ...){
 
@@ -53,10 +52,10 @@ read_scrobbles <- function(file, convert_time = "None", ...){
 #' unix_time <- "1522124746"
 #' timestamp <- convert(unix_time, to = "Time")
 #'
-#' \dontrun{
-#' # A dataframe read in from read_scrobbles called 'scrobbles'
-#' scrobbles$Date <- convert(scrobbles$Date, to = "Time")
-#' }
+#'
+#' my_tracks <- read_scrobbles(system.file("extdata", "scrobbles.txt", package = "scrobbler"))
+#' my_tracks$Date <- convert(my_tracks$Date, to = "Time")
+
 
 convert <- function(unix_col, to, ...){
   if(!to %in% c("Date", "Time")){
