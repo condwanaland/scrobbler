@@ -17,7 +17,5 @@ Copies the script used to scrape scrobbles into your working directory. Necessar
 to run 'fetch_tracks'
 }
 \examples{
-\dontrun{
 install_scrobble_script(version = "3")
-}
 }

@@ -66,9 +66,8 @@ find_py_script <- function(version){
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' install_scrobble_script(version = "3")
-#' }
+
 
 install_scrobble_script <- function(version){
   py_script_path <- find_py_script(version)
