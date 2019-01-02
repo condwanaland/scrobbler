@@ -4,7 +4,12 @@ Title: Download 'Scrobbles' from 'Last.fm'
 Version: 0.1.0
 Author: Conor Neilson
 Maintainer: Conor Neilson <condwanaland@gmail.com>
-Description: Helper functions to fetch and use your 'last.fm'<https://www.last.fm> 'scrobbles'.
+Description: 'Last.fm'<https://www.last.fm> is a music platform focussed on building a 
+    detailed profile of a users listening habits. It does this by 'scrobbling` (recording) 
+    every track you listen to on other platforms ('spotify', 'youtube', 'soundcloud' etc)
+    and transferring them to your 'Last.fm' database. This allows 'Last.fm' to act as a 
+    complete record of your entire listening history. `scrobbler` provides helper functions
+    to download and analyse your listening history in R.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -16,6 +21,5 @@ Suggests:
 URL: https://github.com/condwanaland/scrobbler
 BugReports: https://github.com/condwanaland/scrobbler/issues
 Imports: 
-    anytime,
-    httr
+    anytime
 VignetteBuilder: knitr
