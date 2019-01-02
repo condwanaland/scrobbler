@@ -4,7 +4,7 @@
 \alias{read_scrobbles}
 \title{read_scrobbles}
 \usage{
-read_scrobbles(file, convert_time = "None")
+read_scrobbles(file, convert_time = "None", ...)
 }
 \arguments{
 \item{file}{A .txt file from the output of `fetch_tracks`}
@@ -12,6 +12,8 @@ read_scrobbles(file, convert_time = "None")
 \item{convert_time}{One of 'None', 'Date', 'Time'. Determines what format to put the Date
 column in. Either as a datestamp ('Date'), timestamp ('Time'), or (the default) left as a
 UNIX timestamp ('None').}
+
+\item{...}{Additional arguments to pass to `read_delim`}
 }
 \value{
 A dataframe

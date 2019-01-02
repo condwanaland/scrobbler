@@ -6,6 +6,7 @@
 #' @param convert_time One of 'None', 'Date', 'Time'. Determines what format to put the Date
 #' column in. Either as a datestamp ('Date'), timestamp ('Time'), or (the default) left as a
 #' UNIX timestamp ('None').
+#' @param ... Additional arguments to pass to `read_delim`
 #'
 #' @return A dataframe
 #' @export
@@ -15,13 +16,13 @@
 #' read_scrobbles("scrobbles.txt", convert_time = "Date")
 #' }
 
-read_scrobbles <- function(file, convert_time = "None"){
+read_scrobbles <- function(file, convert_time = "None", ...){
 
   if(!convert_time %in% c("None", "Date", "Time")){
     stop("Must be one of 'None', 'Date', 'Time'")
   }
 
-  dat <- utils::read.delim(file, header = FALSE, sep = "\t")
+  dat <- utils::read.delim(file, header = FALSE, sep = "\t", ...)
   colnames(dat) <- c("Date", "Song", "Artist", "Album",
                      "Song_mb_id", "Artist_mb_id", "Album_mb_id")
 
