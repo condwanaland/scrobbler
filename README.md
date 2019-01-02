@@ -1,5 +1,7 @@
 [![codecov.io](https://codecov.io/github/r-lib/covr/coverage.svg?branch=master)](https://codecov.io/github/condwanaland/scrobbler?branch=master)
 
+[![Travis build status](https://travis-ci.org/condwanaland/musicr.svg?branch=master)](https://travis-ci.org/condwanaland/musicr)
+
 ## scrobbler
 
 `scrobbler` is an R package intended to help people download their scrobbles from Last.fm and run an analysis on their listening history.
