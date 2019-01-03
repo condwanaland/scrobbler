@@ -1,4 +1,4 @@
-[![codecov.io](https://codecov.io/github/r-lib/covr/coverage.svg?branch=master)](https://codecov.io/github/condwanaland/scrobbler?branch=master) [![Build Status](https://travis-ci.org/condwanaland/scrobbler.svg?branch=master)](https://travis-ci.org/condwanaland/scrobbler)
+[![codecov](https://codecov.io/gh/condwanaland/scrobbler/branch/master/graph/badge.svg)](https://codecov.io/gh/condwanaland/scrobbler) [![Build Status](https://travis-ci.org/condwanaland/scrobbler.svg?branch=master)](https://travis-ci.org/condwanaland/scrobbler)
 
 ## scrobbler
 
