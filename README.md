@@ -1,6 +1,6 @@
 [![codecov.io](https://codecov.io/github/r-lib/covr/coverage.svg?branch=master)](https://codecov.io/github/condwanaland/scrobbler?branch=master)
 
-[![Travis build status](https://travis-ci.org/condwanaland/musicr.svg?branch=master)](https://travis-ci.org/condwanaland/musicr)
+[![Travis build status](https://travis-ci.org/condwanaland/musicr.svg?branch=develop)](https://travis-ci.org/condwanaland/musicr)
 
 ## scrobbler
 
