@@ -7,6 +7,7 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
+* Misspelled words are false positives - difference between US and UK english
 
 ## This is a 2nd resubmission. In this version I have
 
