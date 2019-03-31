@@ -20,7 +20,13 @@ get_total_pages <- function(username, api_key){
   )
 
   response <- httr::GET(base_url)
-  parsed_response <- httr::content(response, "parsed")
+  text_response <- httr::content(response, "text")
+  parsed = fromJSON(text_response)
 
-  return(parsed_response[["recenttracks"]][["@attr"]][["totalPages"]])
+
+  total_pages = as.integer(parsed[["recenttracks"]][["@attr"]][["totalPages"]])
+  page_1 = parsed[["recenttracks"]][["track"]]
+
+  return(list(total_pages,
+              page_1))
 }
