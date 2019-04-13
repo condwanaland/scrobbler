@@ -96,44 +96,9 @@ collect_tracks <- function(username, api_key){
   col_names <- c("song", "song_mbid", "artist_mbid", "artist", "album_mbid", "album", "date")
   colnames(long_data) <- col_names
 
+  long_data <- long_data[c('song', 'artist', 'album', 'date',
+                           'song_mbid', 'artist_mbid', 'album_mbid')]
+
   return(long_data)
 
 }
-
-#mydat <- collect_tracks('condwanaland', api_key)
-#
-# data2 <- do.call(rbind, mydat)
-
-# data_dat <- lapply(parsed_dat, function(x){
-#   x[["recenttracks"]][["track"]]
-# })
-#
-# new_dat_list <- lapply(data_dat2, function(x) do.call(cbind, x))
-#
-# data2 <- do.call(rbind, new_dat_list)
-#
-# bound_dat <- data.table::rbindlist(data_dat)
-# bound_dat <- dplyr::bind_rows(data_dat)
-#
-# dat1 <- data_dat[[1]]
-# dat2 <- data_dat[[2]]
-# dat3 <- dplyr::bind_rows(dat1, dat2)
-#
-# dat1$image <- NULL
-# dat1$date <- NULL
-# dat1$streamable <- NULL
-#
-# dat2$image <- NULL
-# dat2$date <- NULL
-# dat2$streamable <- NULL
-#
-# row.names(dat1) <- NULL
-# row.names(dat2) <- NULL
-#
-# rbind(dat1, dat2)
-#
-#
-# all_dat_test <- all_dat
-# all_dat_test <- lapply(all_dat_test, function(x){
-#   jsonlite::fromJSON(x, flatten = TRUE)
-# })
