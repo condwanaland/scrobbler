@@ -21,7 +21,7 @@ get_total_pages <- function(username, api_key){
 
   response <- httr::GET(base_url)
   text_response <- httr::content(response, "text")
-  parsed = fromJSON(text_response)
+  parsed = jsonlite::fromJSON(text_response, flatten = TRUE)
 
 
   total_pages = as.integer(parsed[["recenttracks"]][["@attr"]][["totalPages"]])
@@ -56,7 +56,7 @@ construct_urls <- function(total_pages, username, api_key){
     )
     result[page] <- urls
   }
-  return(na.omit(result))
+  return(stats::na.omit(result))
 }
 
 
@@ -68,8 +68,6 @@ collect_tracks <- function(username, api_key){
   total_pages = tracks[[1]]
 
   all_urls <- construct_urls(total_pages, username, api_key)
-
-  ## Pass urls to a get call and parse response
 
   all_dat <- lapply(all_urls, function(x){
     httr::GET(x)
@@ -87,9 +85,24 @@ collect_tracks <- function(username, api_key){
     x[["recenttracks"]][["track"]]
   })
 
-  return(parsed_dat)
+  long_data <- do.call(rbind, parsed_dat)
+  long_data <- rbind(tracks[[2]], long_data)
+
+  long_data$image <- NULL
+  long_data$streamable <- NULL
+  long_data$url <- NULL
+  long_data$date.uts <- NULL
+
+  col_names <- c("song", "song_mbid", "artist_mbid", "artist", "album_mbid", "album", "date")
+  colnames(long_data) <- col_names
+
+  return(long_data)
 
 }
+
+#mydat <- collect_tracks('condwanaland', api_key)
+#
+# data2 <- do.call(rbind, mydat)
 
 # data_dat <- lapply(parsed_dat, function(x){
 #   x[["recenttracks"]][["track"]]
