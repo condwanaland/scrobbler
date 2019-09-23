@@ -55,6 +55,19 @@ to read in your txt file as a formatted dataframe. `read_scrobbles` also has a `
 Once this is completed, you now have a clean dataframe of your listening history to analyse as you please.
 
 
+### Scrobbling via the API
+
+If you do not want to setup a python installation on your computer, you can also fetch your scrobbles by using the Last.fm API. 
+
+This requires you to get an API key from Last.fm. This takes less than 5 mins, and can be done [here](https://www.last.fm/api/account/create)
+
+Once you have your key, you can use the `collect_tracks` function to create a dataframe of your scrobbled songs
+
+```
+my_data <- scrobbler::collect_tracks(username = "your_username", api_key = "your_api_key")
+```
+
+
 ### Acknowledgements
 
 This package is completely dependent on the fantastic 'lastexport.py' python script that is found here: <https://github.com/encukou/lastscrape-gui>, and the 'lastexport.py' script that is found here: <https://github.com/hanshenrik/music-when>. All credit for the python code in this package goes to the authors of those repos. 
