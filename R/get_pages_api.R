@@ -44,8 +44,7 @@ get_total_pages <- function(username, api_key){
 construct_urls <- function(total_pages, username, api_key){
   result <- vector("character")
 
-  # Start by looping over 2nd page - 1st page is returned by the get_total_pages function
-  for (page in 2:total_pages){
+  for (page in 1:total_pages){
     urls <- paste0(
       "http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=",
       username,
@@ -60,23 +59,39 @@ construct_urls <- function(total_pages, username, api_key){
 }
 
 
-collect_tracks <- function(username, api_key){
-  #pb <- progress_bar$new(total = 100)
-  #pb$tick(0)
+#' collect_tracks
+#'
+#' @param username Your last.fm account username
+#' @param api_key Your last.fm account api key
+#'
+#' @return A dataframe of songs and assoicated metadata
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' collect_tracks(username = "your_username", api_key = "your_api_key)
+#' }
 
+collect_tracks <- function(username, api_key){
+
+  # Call the API, extract the total number of pages, store in variable
   tracks <- get_total_pages(username, api_key)
   total_pages = tracks[[1]]
 
+  # Use total page info to construct one URL for each page
   all_urls <- construct_urls(total_pages, username, api_key)
 
+  # Hit API once for each page (no pagination in API), and parse response
   all_dat <- lapply(all_urls, function(x){
     httr::GET(x)
   })
 
+  # Extract content as text
   all_dat <- lapply(all_dat, function(x){
     httr::content(x, "text")
   })
 
+  # Turn json into dataframe (flatten nested columns)
   all_dat <- lapply(all_dat, function(x){
     jsonlite::fromJSON(x, flatten = TRUE)
   })
@@ -85,19 +100,23 @@ collect_tracks <- function(username, api_key){
     x[["recenttracks"]][["track"]]
   })
 
+  # Bind each sub-data frame into one long one
   long_data <- do.call(rbind, parsed_dat)
-  long_data <- rbind(tracks[[2]], long_data)
 
+  # Remove unnecessary columns
   long_data$image <- NULL
   long_data$streamable <- NULL
   long_data$url <- NULL
   long_data$date.uts <- NULL
 
-  col_names <- c("song", "song_mbid", "artist_mbid", "artist", "album_mbid", "album", "date")
-  colnames(long_data) <- col_names
-
-  long_data <- long_data[c('song', 'artist', 'album', 'date',
-                           'song_mbid', 'artist_mbid', 'album_mbid')]
+  # Set useful names
+  names(long_data)[names(long_data) == "name"] <- "song_title"
+  names(long_data)[names(long_data) == "mbid"] <- "song_mbid"
+  names(long_data)[names(long_data) == "artist.mbid"] <- "artist_mbid"
+  names(long_data)[names(long_data) == "artist.#text"] <- "artist"
+  names(long_data)[names(long_data) == "album.mbid"] <- "album_mbid"
+  names(long_data)[names(long_data) == "album.#text"] <- "album"
+  names(long_data)[names(long_data) == "date.#text"] <- "date"
 
   return(long_data)
 
