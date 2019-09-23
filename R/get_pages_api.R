@@ -20,7 +20,7 @@ get_total_pages <- function(username, api_key){
   )
 
   response <- httr::GET(base_url)
-  text_response <- httr::content(response, "text")
+  text_response <- httr::content(response, "text", encoding = "UTF-8")
   parsed = jsonlite::fromJSON(text_response, flatten = TRUE)
 
 
@@ -44,7 +44,7 @@ get_total_pages <- function(username, api_key){
 construct_urls <- function(total_pages, username, api_key){
   result <- vector("character")
 
-  for (page in 1:total_pages){
+  for (page in seq_along(1:total_pages)){
     urls <- paste0(
       "http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=",
       username,
@@ -77,18 +77,44 @@ collect_tracks <- function(username, api_key){
   # Call the API, extract the total number of pages, store in variable
   tracks <- get_total_pages(username, api_key)
   total_pages = tracks[[1]]
+  print(paste("Total number of pages:", total_pages))
+  print("Starting scrobble downloads...")
 
   # Use total page info to construct one URL for each page
   all_urls <- construct_urls(total_pages, username, api_key)
 
   # Hit API once for each page (no pagination in API), and parse response
-  all_dat <- lapply(all_urls, function(x){
-    httr::GET(x)
-  })
+  # all_dat <- lapply(all_urls, function(x){
+  #   repeat {
+  #     tester <- httr::GET(x)
+  #     #print(tester$status_code)
+  #     if (tester$status_code == 500){
+  #       print("Failed to parse, retrying")
+  #     }
+  #     if (tester$status_code == 200) break
+  #   }
+  #   print("Page successfully parsed")
+  #   return(tester)
+  # })
+
+  counter <- seq_along(1:total_pages)
+  all_dat <- mapply(function(x, y){
+    repeat {
+      tester <- httr::GET(x)
+      #print(tester$status_code)
+      if (tester$status_code == 500){
+        print(paste0("Failed to parse page ", counter[y], ", retrying"))
+      }
+      if (tester$status_code == 200) break
+    }
+    print(paste0("Page ", counter[y], "/", total_pages, " successfully parsed"))
+    #print(mylist[y])
+    return(tester)
+  }, x = all_urls, y = counter, SIMPLIFY = FALSE)
 
   # Extract content as text
   all_dat <- lapply(all_dat, function(x){
-    httr::content(x, "text")
+    httr::content(x, as = "text", encoding = "UTF-8")
   })
 
   # Turn json into dataframe (flatten nested columns)
