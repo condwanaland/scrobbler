@@ -1,0 +1,6 @@
+"song_title" "song_mbid" "artist_mbid" "artist..text" "album_mbid" "album..text" "date..text"
+"London Boy" "2a61a07f-d8f5-4ae4-8dc6-91347c60b81c" "20244d07-534f-4eff-b4d4-930878889970" "Taylor Swift" "5947fb28-ae69-49b3-8d57-ba5732f90f9a" "Lover" "13 Sep 2019, 15:57"
+"Death by a Thousand Cuts" "1861517a-9ac7-4d16-a34b-6ac9600b2fa5" "20244d07-534f-4eff-b4d4-930878889970" "Taylor Swift" "5947fb28-ae69-49b3-8d57-ba5732f90f9a" "Lover" "13 Sep 2019, 15:52"
+"Cornelia Street" "6f9a3a01-54e7-48ce-82c2-697cf5a079d6" "20244d07-534f-4eff-b4d4-930878889970" "Taylor Swift" "5947fb28-ae69-49b3-8d57-ba5732f90f9a" "Lover" "13 Sep 2019, 15:47"
+"Paper Rings" "05996ae9-c7e4-4ef7-b716-a258819f9818" "20244d07-534f-4eff-b4d4-930878889970" "Taylor Swift" "5947fb28-ae69-49b3-8d57-ba5732f90f9a" "Lover" "13 Sep 2019, 15:44"
+"Miss Americana & the Heartbreak Prince" "0182d352-53d0-42dd-ab1b-d67574dc79d4" "20244d07-534f-4eff-b4d4-930878889970" "Taylor Swift" "5947fb28-ae69-49b3-8d57-ba5732f90f9a" "Lover" "13 Sep 2019, 15:40"
