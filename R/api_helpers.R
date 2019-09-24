@@ -18,10 +18,12 @@ get_total_pages <- function(username, api_key){
     "&format=json"
   )
 
-  response <- httr::GET(base_url)
+  repeat {
+    response <- httr::GET(base_url)
+    if (response$status_code == 200) break
+  }
   text_response <- httr::content(response, "text", encoding = "UTF-8")
   parsed = jsonlite::fromJSON(text_response, flatten = TRUE)
-
 
   total_pages = as.integer(parsed[["recenttracks"]][["@attr"]][["totalPages"]])
   page_1 = parsed[["recenttracks"]][["track"]]
