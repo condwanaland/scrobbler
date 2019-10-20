@@ -32,9 +32,9 @@ devtools::install_github("condwanaland/scrobbler")
 Once you've determined whether you want to run the python 2 or 3 script, you can use
 
 ```
-scrobbler::install_scrobble_script(version = )
+scrobbler::install_scrobble_script(version = "version_to_use")
 ```
-where version equals either "2" or "3".
+where `version_to_use` equals either "2" or "3".
 
 This will install the python script in your working directory. You can then run
 
@@ -46,7 +46,7 @@ where `username` equals your last.fm username. This will download a txt file cal
 Once the tracks are downloaded, you can use
 
 ```
-scrobbler::read_scrobbles()
+scrobbler::read_scrobbles("path/to/output")
 ```
 
 to read in your txt file as a formatted dataframe. `read_scrobbles` also has a `convert_time` argument to specify what format you want the scrobbles timestamp to be.
