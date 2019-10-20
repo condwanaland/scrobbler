@@ -25,6 +25,7 @@ test_that("find_py throws error on unsupported version of python", {
 })
 
 test_that("find_py does not throw error on supported versions of python", {
+  skip_on_cran()
   expect_error(find_py_script('3'), NA)
   expect_error(find_py_script('2'), NA)
 })

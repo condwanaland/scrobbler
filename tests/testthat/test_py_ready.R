@@ -7,6 +7,7 @@ test_that("py_ready throws an error when no py script exists", {
 
 install_scrobble_script(version = "3")
 test_that("py_ready does not throw error when py3 script does exist", {
+  skip_on_cran()
   expect_error(py_ready(), NA)
 })
 
@@ -15,6 +16,7 @@ file.remove("lastexport.py")
 
 install_scrobble_script(version = "2")
 test_that("py_ready does not throw error when py2 script does exist", {
+  skip_on_cran()
   expect_error(py_ready(), NA)
 })
 

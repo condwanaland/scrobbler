@@ -8,3 +8,5 @@ README.md
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+lastexport.py
+^lastexport2.py

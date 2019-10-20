@@ -2,12 +2,14 @@ context("Check file creation works")
 
 install_scrobble_script(version = 3)
 test_that("Script is copied successfully v3", {
+  skip_on_cran()
   expect_equal(check_py_script("3"),
                "Python 3 exporter exists")
 })
 
 install_scrobble_script(version = 2)
 test_that("Script is copied successfulyl v2", {
+  skip_on_cran()
   expect_equal(check_py_script("2"),
                "Python 2 exporter exists")
 })
