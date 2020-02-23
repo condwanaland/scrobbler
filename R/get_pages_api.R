@@ -60,11 +60,19 @@ download_scrobbles <- function(username, api_key){
   long_data$image <- NULL
   long_data$streamable <- NULL
   long_data$url <- NULL
-  long_data$date.uts <- NULL
+  #long_data$date.uts <- NULL
 
   # Set useful names
   long_data <- rename_api_response(long_data)
 
   return(long_data)
 
+}
+
+update_scrobbles <- function(data, timestamp_column, username, api_key){
+  last_timestamp <- get_last_timestamp(data, timestamp_column)
+
+  print(last_timestamp)
+  updated_pages <- get_total_pages(username, api_key, from = last_timestamp)[[1]]
+  print(updated_pages)
 }

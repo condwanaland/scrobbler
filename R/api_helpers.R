@@ -8,14 +8,15 @@
 #'
 #' @return A single number character string
 #' @noRd
-get_total_pages <- function(username, api_key){
+get_total_pages <- function(username, api_key, from = 0){
   print("Getting page numbers...")
   base_url <- paste0(
     "http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=",
     username,
     "&limit=1000&api_key=",
     api_key,
-    "&format=json"
+    "&format=json&from=",
+    from
   )
 
   repeat {
@@ -41,7 +42,7 @@ get_total_pages <- function(username, api_key){
 #' @return Vector of urls
 #' @noRd
 #'
-construct_urls <- function(total_pages, username, api_key){
+construct_urls <- function(total_pages, username, api_key, from = 0){
   result <- vector("character")
 
   for (page in seq_along(1:total_pages)){
@@ -51,7 +52,9 @@ construct_urls <- function(total_pages, username, api_key){
       "&limit=1000&api_key=",
       api_key,
       "&format=json&page=",
-      page
+      page,
+      "&from=",
+      from
     )
     result[page] <- urls
   }
@@ -76,5 +79,21 @@ rename_api_response <- function(api_data){
   names(api_data)[names(api_data) == "album.mbid"] <- "album_mbid"
   names(api_data)[names(api_data) == "album.#text"] <- "album"
   names(api_data)[names(api_data) == "date.#text"] <- "date"
+  names(api_data)[names(api_data) == "date.uts"] <- "date_unix"
   return(api_data)
+}
+
+
+get_last_timestamp <- function(scrobbles_df, timestamp_column){
+  if (is.data.frame(scrobbles_df) == FALSE) {
+    stop("`scrobbles_df`` must be a dataframe", call. = FALSE)
+  }
+  time_vec <- scrobbles_df[,timestamp_column]
+  # if (!is.numeric(time_vec)){
+  #   stop("timestamp_column column must be numeric", call. = FALSE)
+  # }
+  time_vec <- sort(time_vec, decreasing = TRUE)
+  last_timestamp <- time_vec[1]
+
+  return(last_timestamp)
 }
