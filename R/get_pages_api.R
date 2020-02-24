@@ -22,6 +22,31 @@ download_scrobbles <- function(username, api_key){
   # Use total page info to construct one URL for each page
   all_urls <- construct_urls(total_pages, username, api_key)
 
+  # Run the downloads
+  long_data <- run_downloads(total_pages, all_urls)
+
+}
+
+update_scrobbles <- function(data, timestamp_column, username, api_key){
+  last_timestamp <- get_last_timestamp(data, timestamp_column)
+
+  print(last_timestamp)
+  total_pages <- get_total_pages(username, api_key, from = last_timestamp)[[1]]
+  print(total_pages)
+
+  all_urls <- construct_urls(total_pages, username, api_key, from = last_timestamp)
+  print(all_urls)
+
+  long_data <- run_downloads(total_pages, all_urls)
+
+  all_data <- rbind(data, long_data)
+
+  return(all_data)
+
+}
+
+
+run_downloads <- function(total_pages, all_urls){
   # Initialise a vector of 1 to total number of pages. Used for the progress counter
   counter <- seq_along(1:total_pages)
 
@@ -67,12 +92,4 @@ download_scrobbles <- function(username, api_key){
 
   return(long_data)
 
-}
-
-update_scrobbles <- function(data, timestamp_column, username, api_key){
-  last_timestamp <- get_last_timestamp(data, timestamp_column)
-
-  print(last_timestamp)
-  updated_pages <- get_total_pages(username, api_key, from = last_timestamp)[[1]]
-  print(updated_pages)
 }
