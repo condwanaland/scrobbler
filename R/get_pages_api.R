@@ -27,6 +27,27 @@ download_scrobbles <- function(username, api_key){
 
 }
 
+#' update_scrobbles
+#'
+#' Companion function to `download_scrobbles`. Only downloads the scrobbles that have been
+#' stored since you ran `download_scrobbles`.
+#'
+#' @param data A dataframe outputted by `download_scrobbles`
+#' @param timestamp_column The `date_unix` column in your dataframe
+#' @param username Last.fm API username
+#' @param api_key Last.fm API key
+#'
+#' @return A dataframe
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' mydat <- download_scrobbles(username = "your_username", api_key = "your_api_key")
+#' update_dat <- update_scrobbles(mydat,
+#'     "date_unix",
+#'     username = "your_username",
+#'     api_key = "your_api_key")
+#' }
 update_scrobbles <- function(data, timestamp_column, username, api_key){
   last_timestamp <- get_last_timestamp(data, timestamp_column)
 
@@ -46,6 +67,13 @@ update_scrobbles <- function(data, timestamp_column, username, api_key){
 }
 
 
+#' run_downloads
+#'
+#' @param total_pages Total number of pages your scrobbles is spread over
+#' @param all_urls The output of `construct_urls`
+#'
+#' @return
+#' @noRd
 run_downloads <- function(total_pages, all_urls){
   # Initialise a vector of 1 to total number of pages. Used for the progress counter
   counter <- seq_along(1:total_pages)
