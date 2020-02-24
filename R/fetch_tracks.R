@@ -15,6 +15,7 @@
 #' }
 
 fetch_tracks <- function(username, out_file, start_page = NULL){
+  .Deprecated("download_scrobbles")
 
   # Arguments must be quoted - check that everything is a character
   check_args_are_chr(username, out_file, start_page)

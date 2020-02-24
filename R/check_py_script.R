@@ -70,6 +70,8 @@ find_py_script <- function(version){
 
 
 install_scrobble_script <- function(version){
+  .Deprecated("download_scrobbles")
+
   py_script_path <- find_py_script(version)
   mydir <- getwd()
 
