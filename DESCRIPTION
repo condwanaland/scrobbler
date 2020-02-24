@@ -13,7 +13,7 @@ Description: 'Last.fm'<https://www.last.fm> is a music platform focussed on buil
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Suggests: 
     testthat,
     knitr,
