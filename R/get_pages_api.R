@@ -14,6 +14,7 @@ download_scrobbles <- function(username = get_lastfm_credentials('username'),
                                api_key = get_lastfm_credentials('key')){
 
   # Call the API, extract the total number of pages, store in variable
+  print(username)
   tracks <- get_total_pages(username, api_key)
   total_pages = tracks[[1]]
   print(paste("Total number of pages:", total_pages))

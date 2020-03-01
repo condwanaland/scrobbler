@@ -19,55 +19,44 @@ Last.fm's webpage is pretty good at providing you some summary statistics about 
 
 ### How to use scrobbler
 
-You can download `scrobbler` from github as follows
+**Note as of version 0.2.15**: `scrobbler` has recently undergone a major API change. In earlier versions there was an option to install a python script and run that to download your scrobbles. This option has been removed, and the only supported method is going via the `Last.fm` API. The 'old' version is available as a github release. 
 
+You can download the latest version of `scrobbler` from CRAN with
 ```
 install.packages("devtools")
+```
 
+Or grab the development version from github with
+```
 devtools::install_github("condwanaland/scrobbler")
 ```
 
-`scrobbler` relies on you having a python installation on your computer. It can support python 2 and 3, but I highly recommend you get a python 3 installation and attach it to your PATH variable. For instructions with this, please check the vignette.
 
-Once you've determined whether you want to run the python 2 or 3 script, you can use
+### Setting up the API
 
+In order to use Last.fm' API you need to get an API key from Last.fm. This takes less than 5 mins, and can be done [here](https://www.last.fm/api/account/create)
+
+Once you have your key and username, you can start downloading your scrobbles
+
+
+### Downloading scrobbles
+
+To make a dataframe of all your scrobbled tracks, simply call `download_scrobbles` using your Last.fm username and API key.
 ```
-scrobbler::install_scrobble_script(version = "version_to_use")
-```
-where `version_to_use` equals either "2" or "3".
-
-This will install the python script in your working directory. You can then run
-
-```
-scrobbler::fetch_tracks(username = "username", out_file = "scrobbles.txt")
-```
-where `username` equals your last.fm username. This will download a txt file called "scrobbles.txt" containing your scrobbles. This is quite a slow process (it takes me about 4 mins to download ~10,000 scrobbles) so don't worry if it looks like your computer is hanging. 
-
-Once the tracks are downloaded, you can use
-
-```
-scrobbler::read_scrobbles("path/to/output")
+library(scrobbler)
+my_data <- download_scrobbles(username = "your_username", api_key = "your_api_key")
 ```
 
-to read in your txt file as a formatted dataframe. `read_scrobbles` also has a `convert_time` argument to specify what format you want the scrobbles timestamp to be.
+### Updating scrobbles
 
+Once you have a lot of scrobbled tracks it can often take a long time to download them all. It would be a waste of time to have to re-download your entire history of scrobbles everytime you wanted to update. 
 
-Once this is completed, you now have a clean dataframe of your listening history to analyse as you please.
-
-
-### Scrobbling via the API
-
-If you do not want to setup a python installation on your computer, you can also fetch your scrobbles by using the Last.fm API. 
-
-This requires you to get an API key from Last.fm. This takes less than 5 mins, and can be done [here](https://www.last.fm/api/account/create)
-
-Once you have your key, you can use the `collect_tracks` function to create a dataframe of your scrobbled songs
-
+To help with this, `scrobbler` provides the `update_scrobbles` function. This function takes a dataframe produced by `download_scrobbles`, and only fetches the tracks that have been scrobbled since you ran `download_scrobbles`. 
 ```
-my_data <- scrobbler::collect_tracks(username = "your_username", api_key = "your_api_key")
+my_updated_data <- update_scrobbles(my_data, 
+                                    timestamp_column = 'unix_date',
+                                    username = "your_username",
+                                    api_key = "your_api_key")
 ```
 
-
-### Acknowledgements
-
-This package is completely dependent on the fantastic 'lastexport.py' python script that is found here: <https://github.com/encukou/lastscrape-gui>, and the 'lastexport.py' script that is found here: <https://github.com/hanshenrik/music-when>. All credit for the python code in this package goes to the authors of those repos. 
+`unix_date` is a column outputted by `download_scrobbles`. It tracks the timestamp of each song, and needs to be passed to `update_scrobbles` so it knows where to start getting new tracksr from. 
