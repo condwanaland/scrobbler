@@ -1,11 +1,5 @@
 context("Testing authentication")
 
-test_that("env vars check throws error", {
-  expect_error(check_env_vars(), "LASTFM_API_USERNAME' and/or 'LASTFM_API_KEY")
-  expect_error(get_lastfm_credentials(env = "myenv"), "env must be one of")
-})
-
-
 Sys.setenv(LASTFM_API_USERNAME = 'test_name')
 Sys.setenv(LASTFM_API_KEY = 'test_key')
 
@@ -17,3 +11,9 @@ test_that("get_creds does not throw error", {
 
 Sys.unsetenv('LASTFM_API_USERNAME')
 Sys.unsetenv('LASTFM_API_KEY')
+
+
+test_that("env vars check throws error", {
+  expect_error(check_env_vars(), "LASTFM_API_USERNAME' and/or 'LASTFM_API_KEY")
+  expect_error(get_lastfm_credentials(env = "myenv"), "env must be one of")
+})

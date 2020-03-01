@@ -4,7 +4,10 @@
 \alias{download_scrobbles}
 \title{download_scrobbles}
 \usage{
-download_scrobbles(username, api_key)
+download_scrobbles(
+  username = get_lastfm_credentials("username"),
+  api_key = get_lastfm_credentials("key")
+)
 }
 \arguments{
 \item{username}{Your last.fm account username}

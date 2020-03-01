@@ -4,7 +4,12 @@
 \alias{update_scrobbles}
 \title{update_scrobbles}
 \usage{
-update_scrobbles(data, timestamp_column, username, api_key)
+update_scrobbles(
+  data,
+  timestamp_column,
+  username = get_lastfm_credentials("username"),
+  api_key = get_lastfm_credentials("key")
+)
 }
 \arguments{
 \item{data}{A dataframe outputted by `download_scrobbles`}
