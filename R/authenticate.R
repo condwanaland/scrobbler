@@ -6,8 +6,10 @@
 #' @export
 #'
 #' @examples
+#' /dontrun{
 #' get_lastfm_credentials(env = 'username')
 #' get_lastfm_credentials(env = 'key')
+#' }
 get_lastfm_credentials <- function(env){
 
   if (!env %in% c("username", "key")){
