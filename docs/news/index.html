@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • scrobbler</title>
+<title>Changelog • scrobbler</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,7 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -54,7 +54,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -116,61 +116,43 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+      <h1>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/condwanaland/scrobbler/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <table class="ref-index">
-
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="download_scrobbles.html">download_scrobbles()</a></code> </p>
-        </td>
-        <td><p>download_scrobbles</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_last_timestamp.html">get_last_timestamp()</a></code> </p>
-        </td>
-        <td><p>get_last_timestamp</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_lastfm_credentials.html">get_lastfm_credentials()</a></code> </p>
-        </td>
-        <td><p>get_lastfm_credentials</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="update_scrobbles.html">update_scrobbles()</a></code> </p>
-        </td>
-        <td><p>update_scrobbles</p></td>
-      </tr>
-    </tbody>
-    </table>
+    <div id="scrobbler-0-2-15-9000" class="section level1">
+<h1 class="page-header">
+<a href="#scrobbler-0-2-15-9000" class="anchor"></a>scrobbler 0.2.15.9000<small> Unreleased </small>
+</h1>
+<ul>
+<li><p>scrobbler now has better authentication options through environment variables. You can set the ‘LASTFM_API_USERNAME’ and ‘LASTFM_API_KEY’ variables to avoid having to pass these everytime. See the README for details.</p></li>
+<li><p>Any functions for setting up and running scrobble downloads by using python scripts have been removed. Going via the Last.fm API is now the only officially supported method.</p></li>
+</ul>
+</div>
+    <div id="scrobbler-0-2-15" class="section level1">
+<h1 class="page-header">
+<a href="#scrobbler-0-2-15" class="anchor"></a>scrobbler 0.2.15<small> 2020-02-24 </small>
+</h1>
+<ul>
+<li><p>Added a <code>NEWS.md</code> file to track changes to the package.</p></li>
+<li><p>Added an <code>update_scrobbles</code> function. Unlike <code>download_scrobbles</code>, this function takes the dataframe output of <code>download_scrobbles</code>, and a timestamp column (needs to be the <code>time_unix</code>) column, and only downloads the scrobbles that have been logged since you last downloaded your scrobbles. This presents a large speed increase, as you no longer need to keep re-downloading all your old scrobbles by repeatedly running <code>download_scrobbles</code>.</p></li>
+<li><p>Added deprecation warnings to functions that call and use the python scripts. These will be fully removed in the next version, making the API call the only supported method. Currently, only tests/helpers are removed</p></li>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+    <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#scrobbler-0-2-15-9000">0.2.15.9000</a></li>
+        <li><a href="#scrobbler-0-2-15">0.2.15</a></li>
+      </ul>
+    </div>
   </div>
+
 </div>
 
 
