@@ -16,6 +16,8 @@ Character string
 get_lastfm_credentials
 }
 \examples{
+\dontrun{
 get_lastfm_credentials(env = 'username')
 get_lastfm_credentials(env = 'key')
+}
 }

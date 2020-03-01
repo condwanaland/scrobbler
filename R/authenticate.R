@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' /dontrun{
+#' \dontrun{
 #' get_lastfm_credentials(env = 'username')
 #' get_lastfm_credentials(env = 'key')
 #' }
@@ -28,6 +28,9 @@ get_lastfm_credentials <- function(env){
   return(val)
 }
 
+#' check_env_vars
+#'
+#' @noRd
 check_env_vars <- function(){
   username_val <- Sys.getenv('LASTFM_API_USERNAME')
   key_val <- Sys.getenv('LASTFM_API_KEY')

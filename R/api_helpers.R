@@ -84,6 +84,18 @@ rename_api_response <- function(api_data){
 }
 
 
+#' get_last_timestamp
+#'
+#' @param scrobbles_df A dataframe output of `download_scrobbles`
+#' @param timestamp_column The column in `scrobbles_df` that corresponds to the `date_unix` column
+#'
+#' @return Numeric vector
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' get_last_timestamp(mydata, 'date_unix')
+#' }
 get_last_timestamp <- function(scrobbles_df, timestamp_column){
   if (is.data.frame(scrobbles_df) == FALSE) {
     stop("`scrobbles_df`` must be a dataframe", call. = FALSE)
