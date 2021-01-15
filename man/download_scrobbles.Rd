@@ -15,7 +15,7 @@ download_scrobbles(
 \item{api_key}{Your last.fm account api key}
 }
 \value{
-A dataframe of songs and assoicated metadata
+A dataframe of songs and associated metadata
 }
 \description{
 download_scrobbles

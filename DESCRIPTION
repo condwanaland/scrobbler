@@ -1,7 +1,7 @@
 Package: scrobbler
 Type: Package
 Title: Download 'Scrobbles' from 'Last.fm'
-Version: 0.3.0
+Version: 1.0.1
 Author: Conor Neilson
 Maintainer: Conor Neilson <condwanaland@gmail.com>
 Description: 'Last.fm'<https://www.last.fm> is a music platform focussed on building a 
@@ -13,7 +13,7 @@ Description: 'Last.fm'<https://www.last.fm> is a music platform focussed on buil
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Suggests: 
     testthat,
     knitr,
