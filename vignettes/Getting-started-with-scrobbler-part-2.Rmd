@@ -1,0 +1,104 @@
+---
+title: "Getting-started-with-scrobbler-part-2"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting-started-with-scrobbler-part-2}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+As a quick recap from part 1, scrobbling is a service offered by Last.fm, where any music you listen to on other platforms (i.e., Spotify) is recorded and stored by Last.fm, along with a timestamp and associated metadata. `scrobbler` is intended as an interface to that database, so you can download and explore your music history with the full freedom of R. Please note, this 2nd part assumes you have already set up a Last.fm account and have at least one song already scrobbled. 
+
+As an aside on what `scrobbler` is not: `scrobbler` is not intended to be a general wrapper around the Last.fm scrobble API. The [full API](https://www.last.fm/api/scrobbling) has a lot of methods available, but the `scrobbler` package is designed to do one thing; download your listening history into R. If there is other functionality of the API you'd like to see in `scrobbler`, please reach out on [github](https://github.com/condwanaland/scrobbler/issues).
+
+
+### Getting set up
+
+In addition to having a Last.fm account, downloading your scrobbles requires you to have an API key (this just authenricates you with Last.fm). To get an API key, you can go through the process [here](https://www.last.fm/api/account/create) (it takes less than 5 mins). Note you should only have to fill out the name and descripton, and you just have to describe that you are downloading your scrobble history for personal analysis. Dont worry about the callback url or homepage. Once you've gone through that step, you should be provided with an API key. Save this key somewhere secure!
+
+
+### Downloading your music history
+
+Now it should be smooth sailing from here. Make sure you start by loading scrobbler
+```{r, eval=FALSE}
+library(scrobbler)
+```
+
+And now call the `download_scrobbles` function, using your username and API key, to start downloading your tracks.
+
+```{r, eval=FALSE}
+my_songs <- download_scrobbles(
+  username = "your_username",
+  api_key = "your_api_key"
+  )
+```
+
+And thats it! You should now have a dataframe called 'my_songs' that contains info one row for each song you listened to, along with its timestamp. You can now analyse this in any way you choose. Lets have a look at what it looks like
+
+```{r, echo=FALSE}
+# Having issues rendering the .Rmd when loading data from csv, so just creating a short df here
+my_songs <- structure(list(song_mbid = c("192915d7-c2df-44f6-9e08-b7d80745bdd3", 
+"6dd374d1-e707-4de0-89b3-889fbb7d7bad", "45d25340-5791-4f93-a642-94494b057646", 
+"0f361896-d6fc-4179-9987-47bf59437c83", "34d419dd-eaf7-48de-b4df-704c61463cd7", 
+"3c8fe6d5-66ac-3b8b-a3f5-36f63fcff693", "0050b4bf-21d2-47f2-a306-4af3dad79018", 
+"4d834fbe-e72d-3e06-88d9-da4945421182", "0ddd52c6-45ed-4064-add0-5d0f0f29af34", 
+"0651a786-0711-4ab8-8eee-148d277c143a"), song_title = c("So Soon", 
+"B Team", "Toy Soldiers", "Stutter", "Fallout", "Porcelain", 
+"Desperate Measures", "Truth Or Dare", "By Now", "My World"), 
+    artist_mbid = c("e358276d-4377-4b9b-88dd-db0d17b0e3c6", "e358276d-4377-4b9b-88dd-db0d17b0e3c6", 
+    "e358276d-4377-4b9b-88dd-db0d17b0e3c6", "e358276d-4377-4b9b-88dd-db0d17b0e3c6", 
+    "e358276d-4377-4b9b-88dd-db0d17b0e3c6", "e358276d-4377-4b9b-88dd-db0d17b0e3c6", 
+    "e358276d-4377-4b9b-88dd-db0d17b0e3c6", "e358276d-4377-4b9b-88dd-db0d17b0e3c6", 
+    "e358276d-4377-4b9b-88dd-db0d17b0e3c6", "0103c1cc-4a09-4a5d-a344-56ad99a77193"
+    ), artist = c("Marianas Trench", "Marianas Trench", "Marianas Trench", 
+    "Marianas Trench", "Marianas Trench", "Marianas Trench", 
+    "Marianas Trench", "Marianas Trench", "Marianas Trench", 
+    "Avril Lavigne"), X.attr.nowplaying = c("true", NA, NA, NA, 
+    NA, NA, NA, NA, NA, NA), album_mbid = c("180bb020-8349-4031-b8a3-bb544a396d84", 
+    "180bb020-8349-4031-b8a3-bb544a396d84", "180bb020-8349-4031-b8a3-bb544a396d84", 
+    "180bb020-8349-4031-b8a3-bb544a396d84", "180bb020-8349-4031-b8a3-bb544a396d84", 
+    "180bb020-8349-4031-b8a3-bb544a396d84", "180bb020-8349-4031-b8a3-bb544a396d84", 
+    "180bb020-8349-4031-b8a3-bb544a396d84", "180bb020-8349-4031-b8a3-bb544a396d84", 
+    "002a0094-40b7-4403-99ab-f3b0daeffacd"), album = c("Ever After", 
+    "Ever After", "Ever After", "Ever After", "Ever After", "Ever After", 
+    "Ever After", "Ever After", "Ever After", "Let Go"), date_unix = c(NA, 
+    1608151945L, 1608151694L, 1608151493L, 1608151238L, 1608150918L, 
+    1608150689L, 1608150459L, 1608150203L, 1608118840L), date = c(NA, 
+    "16 Dec 2020, 20:52", "16 Dec 2020, 20:48", "16 Dec 2020, 20:44", 
+    "16 Dec 2020, 20:40", "16 Dec 2020, 20:35", "16 Dec 2020, 20:31", 
+    "16 Dec 2020, 20:27", "16 Dec 2020, 20:23", "16 Dec 2020, 11:40"
+    )), row.names = c(NA, 10L), class = "data.frame")
+
+my_songs$X.attr.nowplaying <- NULL
+
+my_songs
+```
+The song_, artist_, and album_mbid columns refer to MusicBrainz ID. MusicBrainz is a music encyclopedia that contains lots of data about songs, artists, and albums. You can use the ID to access that entry in MusicBrainz if you want additional metadata (but be warned, these columns may not always be filled). Accessing MusicBrainz will be covered in another post. 
+
+
+### Updating your dataframe
+
+As you may have noticed, it takes a while to download all your music. It would be a pain if you had to go through that process everytime you wanted to make sure your scrobbles were up to date. `scrobbler` provides a `update_scrobbles` function that makes this easier.
+
+To use `update_scrobbles` you pass in an existing dataframe of songs, and supply a date columm (you should use the `date_unix` column that is included in scrobble dataframes by default). This will then only download your new scrobbles not included in the original dataframe, and create a new one with all your tracks.
+
+```{r, eval=FALSE}
+updated_songs <- update_scrobbles(data = my_songs,
+                                  timestamp_column = "date_unix",
+                                  username = "your_username",
+                                  api_key = "your_api_key"
+                                  )
+```
+
+
+This is much faster than having to redownload every time. Note that a current limitation is that if you have added or removed any columns, this will fail as the new columns will not match the old ones. I plan to find a neater solution in future versions of `scrobbler`. 
+
+
+If you have any questions about `scrobbler`, feel free to reach out on github. Have fun!

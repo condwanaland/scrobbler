@@ -1,9 +1,10 @@
 ## Test environments
-* local OS X install, R 3.6.2
-* win-builder (devel and release)
-* Ubuntu Linux 16.04 LTS, R-release, GCC
+* local R installation, R 4.0.2
+* ubuntu 16.04 (on travis-ci), R 4.0.2
+* win-builder (devel)
 
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
+
 

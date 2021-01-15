@@ -1,0 +1,70 @@
+---
+title: "Getting-started-with-scrobbler-part-1"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting-started-with-scrobbler-part-1}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+**Note:** This is the first of a 2 part post about `scrobbler`. This first one will deal with what exactly scrobbles are and how to get started, while part 2 will focus on actually using the `scrobbler` R package.
+
+Like many people, I've always loved music. While my skills at *playing* music are embarrassingly non-existent, I basically listen to music all day every day. Therefore, it was only inevitable that I would eventually start to muse on how I could apply my love of data to my love of music...
+
+
+### What was I listening to?
+
+During one of my musings about the intersection between music and data, I started thinking about what questions you could ask if you had a dataset showing every song you had ever listened to. Data like that would be ridiculously interesing! What artists have I listened to every year? What songs co-occur with each other (one is always listened to after the other)? What is your artist/song ratio? What periods of time do you most often listen to music? The questions become endless...
+
+Given how exciting I thought this dataset could be, I started searching for a way to construct this theoretical dataset. At the time, Spotify was my most frequent source for listening to music, so I started searching for ways to access your entire Spotify history.
+
+
+### Searching for Spotify
+
+My first thought would be look to Spotify itself. I knew they were a pretty data-driven company, and they had a fairly extensive API, so I assumed they would have a way to query for a user id and return every track that user had listened to. 
+
+Alas, it was not to be. While the API I describe above does exist, it is limited to the last 50 tracks you've listened to, and doesn't go back any further than that. Of course, you could do something clever where you have a job that hits that API endpoint every 3 hours or so, returns your last 50 tracks, and writes these to a database. However, this seemed relatively complex, and it would be pretty easy to miss some data.
+
+However, when searching for a solution, I came across this [answer](https://community.spotify.com/t5/Desktop-Mac/Spotify-Listening-History/td-p/421898) which made a reference to setting up scrobbling using Last.fm, and how this could be a way to log all the songs you listen to.
+
+
+### Last.fm? What's that?
+
+For those of you who have never heard of Last.fm, it is an online music website originally founded in 2002. It began as a radio streaming service (similar to Spotify), and placed a lot of emphasis on building a 'music profile' based on your listening. Through time, Last.fm gradually dropped its streaming features, and now lives as a music database. It no longer has a music catalogue - any songs you find on Last.fm will have links out to spotify/youtube for listening. 
+
+Now although Last.fm no longer had music of its own, that didn't mean it changed its goal of building a 'music profile'. But now, instead of having to listen through Last.fm itself, you could listen on whatever platforms you wished, and then optionally send that data to Last.fm. This way, you can listen to music on your favourite platform, and then use Last.fm as your 'database'; anything you listen to can be recoreded and stored in Last.fm's platform. 
+
+This is what Last.fm calls 'scrobbling' - the act of listening to a song on a particular platform, but storing a record of that song within Last.fm's platform.
+
+So at this point I had realised that it didn't seem possible to find my listening history. Spotify didn't store it, and I wasn't using any other platforms seriously. However, with my discovery of Last.fm, I realised that although I wouldn't be able to recreate my past listening history, I could start collecting it now, for analysis in the future.  
+
+
+### Getting started with Last.fm
+
+So hopefully if you've read this far, you're also interested in starting a database of your listening history. Luckily this is pretty straightforward, but I'll outline the steps here.
+
+First, you need to sign up for a [Last.fm account](https://www.last.fm/join). This is completely free - no subscription required.
+
+Once you have an account, you can go to the [Track My Music page](https://www.last.fm/about/trackmymusic) on the Last.fm website. This page outlines all the integrations Last.fm has with other music services. To connect one (such as Spotify), just follow the instructions on the page. 
+
+And thats basically it! 
+
+
+### Exploring your music
+
+Once you've connected your services to Last.fm, they'll automatically send music back to Last.fm to be stored. 
+
+If you're interested in checking out stats about your music, Last.fm has an awesome summary page if you login and go to your profile. It'll have info about your most listened tracks, how many artists you've listened to, etc...
+
+However, people who use data a lot know that summaries often hide interesting tidbits, and what we really want is the full raw data of every track. In a next post, I'll show you how to use my `scrobbler` package to retrieve everything you've stored in Last.fm and explore it in R.
+
+Check out part 2 for how to start using the package.
+
+

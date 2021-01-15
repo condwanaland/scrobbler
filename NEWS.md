@@ -4,6 +4,8 @@
 
 * Any functions for setting up and running scrobble downloads by using python scripts have been removed. Going via the Last.fm API is now the only officially supported method.
 
+* Removed the old python vignette, and added two new ones describing the updated workflow.
+
 # scrobbler 0.2.15
 
 * Added a `NEWS.md` file to track changes to the package.
