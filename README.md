@@ -23,7 +23,7 @@ Last.fm's webpage is pretty good at providing you some summary statistics about 
 
 You can download the latest version of `scrobbler` from CRAN with
 ```
-install.packages("devtools")
+install.packages("scrobbler")
 ```
 
 Or grab the development version from github with
