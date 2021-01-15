@@ -3,7 +3,7 @@
 #' @param username Your last.fm account username
 #' @param api_key Your last.fm account api key
 #'
-#' @return A dataframe of songs and assoicated metadata
+#' @return A dataframe of songs and associated metadata
 #' @export
 #'
 #' @examples
