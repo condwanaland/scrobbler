@@ -119,6 +119,7 @@ run_downloads <- function(total_pages, all_urls){
   long_data$image <- NULL
   long_data$streamable <- NULL
   long_data$url <- NULL
+  long_data$X.attr.nowplaying <- NULL
   #long_data$date.uts <- NULL
 
   # Set useful names
