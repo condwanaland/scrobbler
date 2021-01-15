@@ -1,3 +1,5 @@
+# scrobbler 1.0.1.9000
+
 # scrobbler 1.0.1
 
 * scrobbler now has better authentication options through environment variables. You can set the 'LASTFM_API_USERNAME' and 'LASTFM_API_KEY' variables to avoid having to pass these everytime.
