@@ -6,10 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Download Scrobbles from Last.fm • scrobbler</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Download Scrobbles from Last.fm">
 <meta property="og:description" content="Last.fm&lt;https://www.last.fm&gt; is a music platform focussed on building a 
     detailed profile of a users listening habits. It does this by scrobbling (recording) 
@@ -17,13 +18,12 @@
     and transferring them to your Last.fm database. This allows Last.fm to act as a 
     complete record of your entire listening history. scrobbler provides helper functions
     to download and analyse your listening history in R.">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">scrobbler</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.15.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1.9000</span>
       </span>
     </div>
 
@@ -44,7 +44,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -59,7 +59,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/example-workflow.html">Example Workflow</a>
+      <a href="articles/Getting-started-with-scrobbler-part-1.html">Getting-started-with-scrobbler-part-1</a>
+    </li>
+    <li>
+      <a href="articles/Getting-started-with-scrobbler-part-2.html">Getting-started-with-scrobbler-part-2</a>
     </li>
   </ul>
 </li>
@@ -69,8 +72,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/condwanaland/scrobbler">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/condwanaland/scrobbler/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -106,46 +109,47 @@
 <div id="how-to-use-scrobbler" class="section level3">
 <h3 class="hasAnchor">
 <a href="#how-to-use-scrobbler" class="anchor"></a>How to use scrobbler</h3>
-<p>You can download <code>scrobbler</code> from github as follows</p>
-<pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("devtools")
-
-devtools::install_github("condwanaland/scrobbler")</a></code></pre>
-<p><code>scrobbler</code> relies on you having a python installation on your computer. It can support python 2 and 3, but I highly recommend you get a python 3 installation and attach it to your PATH variable. For instructions with this, please check the vignette.</p>
-<p>Once you’ve determined whether you want to run the python 2 or 3 script, you can use</p>
-<pre><code>scrobbler::install_scrobble_script(version = "version_to_use")</code></pre>
-<p>where <code>version_to_use</code> equals either “2” or “3”.</p>
-<p>This will install the python script in your working directory. You can then run</p>
-<pre><code>scrobbler::fetch_tracks(username = "username", out_file = "scrobbles.txt")</code></pre>
-<p>where <code>username</code> equals your last.fm username. This will download a txt file called “scrobbles.txt” containing your scrobbles. This is quite a slow process (it takes me about 4 mins to download ~10,000 scrobbles) so don’t worry if it looks like your computer is hanging.</p>
-<p>Once the tracks are downloaded, you can use</p>
-<pre><code>scrobbler::read_scrobbles("path/to/output")</code></pre>
-<p>to read in your txt file as a formatted dataframe. <code>read_scrobbles</code> also has a <code>convert_time</code> argument to specify what format you want the scrobbles timestamp to be.</p>
-<p>Once this is completed, you now have a clean dataframe of your listening history to analyse as you please.</p>
+<p><strong>Note as of version 0.2.15</strong>: <code>scrobbler</code> has recently undergone a major API change. In earlier versions there was an option to install a python script and run that to download your scrobbles. This option has been removed, and the only supported method is going via the <code>Last.fm</code> API. The ‘old’ version is available as a github release.</p>
+<p>You can download the latest version of <code>scrobbler</code> from CRAN with</p>
+<pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("scrobbler")</a></code></pre>
+<p>Or grab the development version from github with</p>
+<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("condwanaland/scrobbler")</a></code></pre>
 </div>
-<div id="scrobbling-via-the-api" class="section level3">
+<div id="setting-up-the-api" class="section level3">
 <h3 class="hasAnchor">
-<a href="#scrobbling-via-the-api" class="anchor"></a>Scrobbling via the API</h3>
-<p>If you do not want to setup a python installation on your computer, you can also fetch your scrobbles by using the Last.fm API.</p>
-<p>This requires you to get an API key from Last.fm. This takes less than 5 mins, and can be done <a href="https://www.last.fm/api/account/create">here</a></p>
-<p>Once you have your key, you can use the <code>collect_tracks</code> function to create a dataframe of your scrobbled songs</p>
-<pre><code>my_data &lt;- scrobbler::collect_tracks(username = "your_username", api_key = "your_api_key")</code></pre>
+<a href="#setting-up-the-api" class="anchor"></a>Setting up the API</h3>
+<p>In order to use Last.fm’ API you need to get an API key from Last.fm. This takes less than 5 mins, and can be done <a href="https://www.last.fm/api/account/create">here</a></p>
+<p>Once you have your key and username, you can start downloading your scrobbles</p>
 </div>
-<div id="acknowledgements" class="section level3">
+<div id="downloading-scrobbles" class="section level3">
 <h3 class="hasAnchor">
-<a href="#acknowledgements" class="anchor"></a>Acknowledgements</h3>
-<p>This package is completely dependent on the fantastic ‘lastexport.py’ python script that is found here: <a href="https://github.com/encukou/lastscrape-gui" class="uri">https://github.com/encukou/lastscrape-gui</a>, and the ‘lastexport.py’ script that is found here: <a href="https://github.com/hanshenrik/music-when" class="uri">https://github.com/hanshenrik/music-when</a>. All credit for the python code in this package goes to the authors of those repos.</p>
+<a href="#downloading-scrobbles" class="anchor"></a>Downloading scrobbles</h3>
+<p>To make a dataframe of all your scrobbled tracks, simply call <code>download_scrobbles</code> using your Last.fm username and API key.</p>
+<pre><code><a href="https://github.com/condwanaland/scrobbler">library(scrobbler)
+my_data &lt;- download_scrobbles(username = "your_username", api_key = "your_api_key")</a></code></pre>
+</div>
+<div id="updating-scrobbles" class="section level3">
+<h3 class="hasAnchor">
+<a href="#updating-scrobbles" class="anchor"></a>Updating scrobbles</h3>
+<p>Once you have a lot of scrobbled tracks it can often take a long time to download them all. It would be a waste of time to have to re-download your entire history of scrobbles everytime you wanted to update.</p>
+<p>To help with this, <code>scrobbler</code> provides the <code>update_scrobbles</code> function. This function takes a dataframe produced by <code>download_scrobbles</code>, and only fetches the tracks that have been scrobbled since you ran <code>download_scrobbles</code>.</p>
+<pre><code>my_updated_data &lt;- update_scrobbles(my_data, 
+                                    timestamp_column = 'unix_date',
+                                    username = "your_username",
+                                    api_key = "your_api_key")</code></pre>
+<p><code>unix_date</code> is a column outputted by <code>download_scrobbles</code>. It tracks the timestamp of each song, and needs to be passed to <code>update_scrobbles</code> so it knows where to start getting new tracksr from.</p>
 </div>
 </div>
 
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=scrobbler">https://​cloud.r-project.org/​package=scrobbler</a>
 </li>
-<li>Browse source code at <br><a href="https://github.com/condwanaland/scrobbler">https://​github.com/​condwanaland/​scrobbler</a>
+<li>Browse source code at <br><a href="https://github.com/condwanaland/scrobbler/">https://​github.com/​condwanaland/​scrobbler/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/condwanaland/scrobbler/issues">https://​github.com/​condwanaland/​scrobbler/​issues</a>
 </li>
@@ -182,7 +186,7 @@ devtools::install_github("condwanaland/scrobbler")</a></code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

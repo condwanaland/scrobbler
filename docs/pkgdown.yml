@@ -1,5 +1,8 @@
-pandoc: 1.19.2.1
-pkgdown: 1.4.1
+pandoc: '2.13'
+pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: []
+articles:
+  Getting-started-with-scrobbler-part-1: Getting-started-with-scrobbler-part-1.html
+  Getting-started-with-scrobbler-part-2: Getting-started-with-scrobbler-part-2.html
+last_built: 2021-05-28T22:41Z
 
