@@ -14,7 +14,6 @@ download_scrobbles <- function(username = get_lastfm_credentials('username'),
                                api_key = get_lastfm_credentials('key')){
 
   # Call the API, extract the total number of pages, store in variable
-  print(username)
   tracks <- get_total_pages(username, api_key)
   total_pages = tracks[[1]]
   print(paste("Total number of pages:", total_pages))
@@ -56,13 +55,9 @@ update_scrobbles <- function(data,
 
   last_timestamp <- get_last_timestamp(data, timestamp_column)
 
-  print(username)
-  print(api_key)
   total_pages <- get_total_pages(username, api_key, from = last_timestamp)[[1]]
-  print(total_pages)
 
   all_urls <- construct_urls(total_pages, username, api_key, from = last_timestamp)
-  print(all_urls)
 
   long_data <- run_downloads(total_pages, all_urls)
 
