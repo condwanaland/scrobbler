@@ -1,4 +1,6 @@
-# scrobbler 1.0.1.9000
+# scrobbler 1.0.2
+
+* Extraneous printing in both download functions has been removed
 
 # scrobbler 1.0.1
 
