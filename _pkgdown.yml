@@ -1,11 +1,6 @@
 template:
   params:
 home:
-  links:
-  - text: Browse source code at
-    href: https://github.com/condwanaland/scrobbler
-  - text: Report a bug at
-    href: https://github.com/condwanaland/scrobbler/issues
   strip_header: false
 navbar:
   right:
