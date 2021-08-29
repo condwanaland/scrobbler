@@ -6,7 +6,7 @@ home:
     href: https://github.com/condwanaland/scrobbler
   - text: Report a bug at
     href: https://github.com/condwanaland/scrobbler/issues
-  strip_header: true
+  strip_header: false
 navbar:
   right:
   - icon: fa-arrow-circle-left fa-lg
