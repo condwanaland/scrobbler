@@ -1,4 +1,16 @@
-destination: docs
 template:
   params:
-    bootswatch: cerulean
+home:
+  links:
+  - text: Browse source code at
+    href: https://github.com/condwanaland/scrobbler
+  - text: Report a bug at
+    href: https://github.com/condwanaland/scrobbler/issues
+  strip_header: true
+navbar:
+  right:
+  - icon: fa-arrow-circle-left fa-lg
+    href: https://conorneilson.com/r
+    text: Go back to main site
+
+destination: '../Still-the-Data/static/r/scrobbler'
