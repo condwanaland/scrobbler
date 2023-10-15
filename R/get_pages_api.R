@@ -107,14 +107,19 @@ run_downloads <- function(total_pages, all_urls){
     x[["recenttracks"]][["track"]]
   })
 
+  parsed_dat <- lapply(parsed_dat, function(x){
+    x[, c("mbid", "name", "artist.mbid", "artist.#text", "album.mbid",
+          "album.#text", "date.uts", "date.#text")]
+  })
+
   # Bind each sub-data frame into one long one
   long_data <- do.call(rbind, parsed_dat)
 
   # Remove unnecessary columns
-  long_data$image <- NULL
-  long_data$streamable <- NULL
-  long_data$url <- NULL
-  long_data$X.attr.nowplaying <- NULL
+  #long_data$image <- NULL
+  #long_data$streamable <- NULL
+  #long_data$url <- NULL
+  #long_data$X.attr.nowplaying <- NULL
   rownames(long_data) <- NULL
   #long_data$date.uts <- NULL
 

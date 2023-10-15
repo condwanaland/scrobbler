@@ -1,3 +1,7 @@
+# scrobbler 1.0.3
+
+* Fixed a longstanding (sorry!) issue where `download_scrobbles` would fail due to differing numbers of columns. Issues is fixed and code is made more robust overall (by explicitly selecting needed columns rather than dropping unneeded ones)
+
 # scrobbler 1.0.2
 
 * Extraneous printing in both download functions has been removed
