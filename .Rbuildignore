@@ -10,3 +10,4 @@ README.md
 ^pkgdown$
 lastexport.py
 ^lastexport2.py
+^\.github$
