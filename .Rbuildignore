@@ -11,3 +11,4 @@ README.md
 lastexport.py
 ^lastexport2.py
 ^\.github$
+^CRAN-SUBMISSION$
