@@ -24,6 +24,7 @@ Last.fm's webpage is pretty good at providing you some summary statistics about 
 **Note as of version 0.2.15**: `scrobbler` has recently undergone a major API change. In earlier versions there was an option to install a python script and run that to download your scrobbles. This option has been removed, and the only supported method is going via the `Last.fm` API. The 'old' version is available as a github release. 
 
 You can download the latest version of `scrobbler` from CRAN with
+
 ```
 install.packages("scrobbler")
 ```
