@@ -15,16 +15,23 @@ download_scrobbles <- function(username = get_lastfm_credentials('username'),
                                .limit1 = FALSE){
 
   # Call the API, extract the total number of pages, store in variable
-  tracks <- get_total_pages(username, api_key)
-  total_pages = tracks[[1]]
-  print(paste("Total number of pages:", total_pages))
-  print("Starting scrobble downloads...")
+  if (.limit1 == FALSE) {
+    tracks <- get_total_pages(username, api_key)
+    total_pages = tracks[[1]]
+    print(paste("Total number of pages:", total_pages))
+    print("Starting scrobble downloads...")
+  }
+
 
   # Use total page info to construct one URL for each page
-  if (.limit1 == TRUE) {
-    total_pages <- 1
+  if (.limit1) {
+    total_pages <- 3
+    all_urls <- construct_urls(total_pages, username, api_key, limit = 5)
   }
-  all_urls <- construct_urls(total_pages, username, api_key)
+  else {
+    all_urls <- construct_urls(total_pages, username, api_key)
+  }
+
 
   # Run the downloads
   long_data <- run_downloads(total_pages, all_urls)

@@ -14,9 +14,10 @@ License: GPL-3
 Encoding: UTF-8
 RoxygenNote: 7.1.2
 Suggests: 
-    testthat,
+    httptest,
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 URL: https://github.com/condwanaland/scrobbler
 BugReports: https://github.com/condwanaland/scrobbler/issues
 Imports: 

@@ -42,14 +42,16 @@ get_total_pages <- function(username, api_key, from = 0){
 #' @return Vector of urls
 #' @noRd
 #'
-construct_urls <- function(total_pages, username, api_key, from = 0){
+construct_urls <- function(total_pages, username, api_key, from = 0, limit = 1000){
   result <- vector("character")
 
   for (page in seq_along(1:total_pages)){
     urls <- paste0(
       "http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=",
       username,
-      "&limit=1000&api_key=",
+      "&limit=",
+      limit,
+      "&api_key=",
       api_key,
       "&format=json&page=",
       page,
