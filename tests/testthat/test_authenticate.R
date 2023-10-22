@@ -1,5 +1,3 @@
-context("Testing authentication")
-
 Sys.setenv(LASTFM_API_USERNAME = 'test_name')
 Sys.setenv(LASTFM_API_KEY = 'test_key')
 

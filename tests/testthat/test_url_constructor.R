@@ -1,5 +1,3 @@
-context("Test URL constructor")
-
 test_urls <- c("http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=RScrobblerUser&limit=1000&api_key=123456789&format=json&page=1&from=0",
                "http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=RScrobblerUser&limit=1000&api_key=123456789&format=json&page=2&from=0",
                "http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=RScrobblerUser&limit=1000&api_key=123456789&format=json&page=3&from=0",

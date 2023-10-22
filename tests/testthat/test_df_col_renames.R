@@ -1,5 +1,3 @@
-context("Test API response columns are renamed correctly")
-
 unnamed_data <- read.table(system.file("extdata", "example_api_data_unnamed.txt", package = "scrobbler"), header = TRUE)
 
 test_renamed_data <- rename_api_response(unnamed_data)
