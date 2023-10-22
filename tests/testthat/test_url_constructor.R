@@ -16,5 +16,5 @@ test_urls <- c("http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&us
 )
 
 test_that("constructor correctly creates api links", {
-  expect_equal(test_urls, construct_urls(15, "RScrobblerUser", 123456789))
+  expect_equal(test_urls, construct_urls(15, "RScrobblerUser", 123456789, max_per_page = 1000))
 })

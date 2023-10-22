@@ -13,24 +13,23 @@
 download_scrobbles <- function(username = get_lastfm_credentials('username'),
                                api_key = get_lastfm_credentials('key'),
                                max_per_page = 1000,
-                               .limit1 = FALSE){
+                               max_pages = NULL
+                               ){
 
   # Call the API, extract the total number of pages, store in variable
-  if (.limit1 == FALSE) {
-    tracks <- get_total_pages(username, api_key, max_per_page = max_per_page)
-    total_pages = tracks[[1]]
-    print(paste("Total number of pages:", total_pages))
-    print("Starting scrobble downloads...")
-  }
+  tracks <- get_total_pages(username, api_key, max_per_page = max_per_page)
+  total_pages = tracks[[1]]
+  print(paste("Total number of pages:", total_pages))
+  print("Starting scrobble downloads...")
 
   # Use total page info to construct one URL for each page
-  if (.limit1) {
-    total_pages <- 3
-    all_urls <- construct_urls(total_pages, username, api_key, max_per_page = max_per_page)
+  if (!missing(max_pages)) {
+    total_pages <- max_pages
+    print(paste0("Capping downloads at ", total_pages, " pages"))
   }
-  else {
-    all_urls <- construct_urls(total_pages, username, api_key, max_per_page = max_per_page)
-  }
+
+  all_urls <- construct_urls(total_pages, username, api_key, max_per_page = max_per_page)
+
 
 
   # Run the downloads
@@ -62,13 +61,23 @@ download_scrobbles <- function(username = get_lastfm_credentials('username'),
 update_scrobbles <- function(data,
                              timestamp_column,
                              username = get_lastfm_credentials('username'),
-                             api_key = get_lastfm_credentials('key')){
+                             api_key = get_lastfm_credentials('key'),
+                             max_per_page = 1000
+                             ){
 
   last_timestamp <- get_last_timestamp(data, timestamp_column)
 
-  total_pages <- get_total_pages(username, api_key, from = last_timestamp)[[1]]
+  total_pages <- get_total_pages(username,
+                                 api_key,
+                                 from = last_timestamp,
+                                 max_per_page = max_per_page)[[1]]
 
-  all_urls <- construct_urls(total_pages, username, api_key, from = last_timestamp)
+  all_urls <- construct_urls(total_pages,
+                             username,
+                             api_key,
+                             from = last_timestamp,
+                             max_per_page = max_per_page
+                             )
 
   long_data <- run_downloads(total_pages, all_urls)
 
