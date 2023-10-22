@@ -8,12 +8,14 @@
 #'
 #' @return A single number character string
 #' @noRd
-get_total_pages <- function(username, api_key, from = 0){
+get_total_pages <- function(username, api_key, from = 0, max_per_page){
   print("Getting page numbers...")
   base_url <- paste0(
     "http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=",
     username,
-    "&limit=1000&api_key=",
+    "&limit=",
+    max_per_page,
+    "&api_key=",
     api_key,
     "&format=json&from=",
     from
@@ -42,7 +44,7 @@ get_total_pages <- function(username, api_key, from = 0){
 #' @return Vector of urls
 #' @noRd
 #'
-construct_urls <- function(total_pages, username, api_key, from = 0, limit = 1000){
+construct_urls <- function(total_pages, username, api_key, from = 0, max_per_page){
   result <- vector("character")
 
   for (page in seq_along(1:total_pages)){
@@ -50,7 +52,7 @@ construct_urls <- function(total_pages, username, api_key, from = 0, limit = 100
       "http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=",
       username,
       "&limit=",
-      limit,
+      max_per_page,
       "&api_key=",
       api_key,
       "&format=json&page=",
