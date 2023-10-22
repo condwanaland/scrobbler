@@ -1,8 +1,8 @@
 <!-- badges: start -->
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/) [![codecov](https://codecov.io/gh/condwanaland/scrobbler/branch/master/graph/badge.svg)](https://codecov.io/gh/condwanaland/scrobbler) 
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/) [![codecov](https://codecov.io/gh/condwanaland/scrobbler/branch/main/graph/badge.svg)](https://codecov.io/gh/condwanaland/scrobbler) 
 [![R-CMD-check](https://github.com/condwanaland/scrobbler/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/condwanaland/scrobbler/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
-# scrobbler
+
 
 `scrobbler` is an R package intended to help people download their scrobbles from Last.fm and run an analysis on their listening history.
 
