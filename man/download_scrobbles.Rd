@@ -6,13 +6,19 @@
 \usage{
 download_scrobbles(
   username = get_lastfm_credentials("username"),
-  api_key = get_lastfm_credentials("key")
+  api_key = get_lastfm_credentials("key"),
+  max_per_page = 1000,
+  max_pages = NULL
 )
 }
 \arguments{
 \item{username}{Your last.fm account username}
 
 \item{api_key}{Your last.fm account api key}
+
+\item{max_per_page}{Controls the maximum number of songs on each page of the API. A lower number here will lead to a higher number total pages. Defaults to 1000. Mainly useful for testing.}
+
+\item{max_pages}{Controls the maximum number of pages to return from the API. By default it will fetch everything. Mainly useful for testing.}
 }
 \value{
 A dataframe of songs and associated metadata

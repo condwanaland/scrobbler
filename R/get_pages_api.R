@@ -2,6 +2,8 @@
 #'
 #' @param username Your last.fm account username
 #' @param api_key Your last.fm account api key
+#' @param max_per_page Controls the maximum number of songs on each page of the API. A lower number here will lead to a higher number total pages. Defaults to 1000. Mainly useful for testing.
+#' @param max_pages Controls the maximum number of pages to return from the API. By default it will fetch everything. Mainly useful for testing.
 #'
 #' @return A dataframe of songs and associated metadata
 #' @export
@@ -46,6 +48,7 @@ download_scrobbles <- function(username = get_lastfm_credentials('username'),
 #' @param timestamp_column The `date_unix` column in your dataframe
 #' @param username Last.fm API username
 #' @param api_key Last.fm API key
+#' @param max_per_page Controls the maximum number of songs on each page of the API. A lower number here will lead to a higher number total pages. Defaults to 1000. Mainly useful for testing. description
 #'
 #' @return A dataframe
 #' @export
@@ -93,7 +96,7 @@ update_scrobbles <- function(data,
 #' @param total_pages Total number of pages your scrobbles is spread over
 #' @param all_urls The output of `construct_urls`
 #'
-#' @return
+#' @return Dataframe
 #' @noRd
 run_downloads <- function(total_pages, all_urls){
   # Initialise a vector of 1 to total number of pages. Used for the progress counter

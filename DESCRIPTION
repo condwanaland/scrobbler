@@ -12,7 +12,7 @@ Description: 'Last.fm'<https://www.last.fm> is a music platform focussed on buil
     to download and analyse your listening history in R.
 License: GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Suggests: 
     httptest,
     knitr,

@@ -8,7 +8,8 @@ update_scrobbles(
   data,
   timestamp_column,
   username = get_lastfm_credentials("username"),
-  api_key = get_lastfm_credentials("key")
+  api_key = get_lastfm_credentials("key"),
+  max_per_page = 1000
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ update_scrobbles(
 \item{username}{Last.fm API username}
 
 \item{api_key}{Last.fm API key}
+
+\item{max_per_page}{Controls the maximum number of songs on each page of the API. A lower number here will lead to a higher number total pages. Defaults to 1000. Mainly useful for testing. description}
 }
 \value{
 A dataframe
