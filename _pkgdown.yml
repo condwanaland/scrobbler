@@ -8,4 +8,4 @@ navbar:
     href: https://conorneilson.com/r
     text: Go back to main site
 
-destination: '../Still-the-Data/static/r/scrobbler'
+destination: '../a-sky-full-of-data/static/r/scrobbler'
