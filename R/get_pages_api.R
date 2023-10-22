@@ -22,7 +22,6 @@ download_scrobbles <- function(username = get_lastfm_credentials('username'),
     print("Starting scrobble downloads...")
   }
 
-
   # Use total page info to construct one URL for each page
   if (.limit1) {
     total_pages <- 3
